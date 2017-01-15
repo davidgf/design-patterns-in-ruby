@@ -4,7 +4,8 @@ Summary of the design patterns explained in the book [Design Patterns in Ruby](h
 
 ## Design Patterns
 
-* [Template Method pattern](template_method.md)
-* [Strategy pattern](strategy.md)
-* [Observer pattern](observer.md)
-* [Composite pattern](composite.md)
+* [Template Method](template_method.md)
+* [Strategy](strategy.md)
+* [Observer](observer.md)
+* [Composite](composite.md)
+* [Iterator](iterator.md)
