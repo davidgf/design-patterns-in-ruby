@@ -68,7 +68,7 @@ class Report
 end
 ```
 
-That's kind of messy, the code that handles both formats is tangled up and, even worse, it's not extensible at all (what if we want to add a new format?). Let's refactor the code looking for what stay the same. In most reports the basic flow is the same, regarless of the format: output header, output title, output each line of the report and output any trailing stuff required by the format. We could create an abstract base class that performs all those steps but leaves the details to a subclass:
+That's kind of messy, the code that handles both formats is tangled up and, even worse, it's not extensible at all (what if we want to add a new format?). Let's refactor the code looking for what stay the same. In most reports the basic flow is the same, regardless of the format: output header, output title, output each line of the report and output any trailing stuff required by the format. We could create an abstract base class that performs all those steps but leaves the details to a subclass:
 
 ```ruby
 class Report
