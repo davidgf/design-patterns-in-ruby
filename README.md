@@ -12,4 +12,5 @@ Summary of the design patterns explained in the book [Design Patterns in Ruby](h
 * [Command](command.md): performs some specific task without having any information about the receiver of the request
 * [Adapter](adapter.md): helps two incompatible interfaces to work together
 * [Proxy](proxy.md): allows us having more control over how and when we access to a certain object
-* [Decorator](decorator.md): vary the responsibilities of an object adding some features.
+* [Decorator](decorator.md): vary the responsibilities of an object adding some features
+* [Singleton](singleton.md): have a single instance of certain class across the application
