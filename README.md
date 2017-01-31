@@ -14,3 +14,4 @@ Summary of the design patterns explained in the book [Design Patterns in Ruby](h
 * [Proxy](proxy.md): allows us having more control over how and when we access to a certain object
 * [Decorator](decorator.md): vary the responsibilities of an object adding some features
 * [Singleton](singleton.md): have a single instance of certain class across the application
+* [Factory](factory.md): create objects without having to specify the exact class of the object that will be created
