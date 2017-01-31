@@ -15,3 +15,4 @@ Summary of the design patterns explained in the book [Design Patterns in Ruby](h
 * [Decorator](decorator.md): vary the responsibilities of an object adding some features
 * [Singleton](singleton.md): have a single instance of certain class across the application
 * [Factory](factory.md): create objects without having to specify the exact class of the object that will be created
+* [Builder](builder.md): create complex objects that are hard to configure.
