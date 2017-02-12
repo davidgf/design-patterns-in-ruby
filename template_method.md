@@ -8,7 +8,7 @@ The general idea of the Template Method pattern is to build an abstract base cla
 
 ## Example
 
-We have to generate an HTML report, so we come up with something like this:
+We have to generate a HTML report, so we come up with something like this:
 
 ```ruby
 class Report
