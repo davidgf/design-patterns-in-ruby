@@ -17,3 +17,13 @@ Summary of the design patterns explained in the book [Design Patterns in Ruby](h
 * [Singleton](singleton.md): have a single instance of certain class across the application
 * [Strategy](strategy.md): varies part of an algorithm at runtime
 * [Template Method](template_method.md): redefines certain steps of an algorithm without changing the algorithm's structure
+
+## Contributing
+
+Contributions are welcome! What could you do?:
+* Find typos and grammar mistakes
+* Propose a better way to explain a pattern
+* Add clearer examples of a pattern usage
+* Add other GoF patterns that are not covered in the book
+
+**Code examples refactoring** PR's will **not be considered**. The examples provided by Russ Olsen in his book are meant to be simple and self explanatory, not the best performing or most elegant, their purpose is just educational.
