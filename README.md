@@ -4,6 +4,8 @@ Summary of the design patterns explained in the book [Design Patterns in Ruby](h
 
 ## Design Patterns
 
+### GoF Patterns
+
 * [Adapter](adapter.md): helps two incompatible interfaces to work together
 * [Builder](builder.md): create complex objects that are hard to configure
 * [Command](command.md): performs some specific task without having any information about the receiver of the request
@@ -17,6 +19,13 @@ Summary of the design patterns explained in the book [Design Patterns in Ruby](h
 * [Singleton](singleton.md): have a single instance of certain class across the application
 * [Strategy](strategy.md): varies part of an algorithm at runtime
 * [Template Method](template_method.md): redefines certain steps of an algorithm without changing the algorithm's structure
+
+### Non-GoF Patterns: Patterns For Ruby
+
+* [Convention Over Configuration](convention_over_configuration.md): build an extensible system and not carrying the configuration burden.
+* [Domain-Specific Language](dsl.md): build a convenient syntax for solving problems of a specific domain.
+* [Meta-Programming](meta_programming.md): gain more flexibility when defining new classes and create custom tailored objects on the fly.
+
 
 ## Contributing
 
