@@ -4,19 +4,18 @@
 We need to create a complex object that is hard to configure.
 
 ## Solution
-The **Builder** pattern encapsulates the construcion logic of complex objects in its own class. It defines an interface to configure the object step by step, hiding the implementation details.
+The **Builder** pattern encapsulates the construction logic of complex objects in its own class. It defines an interface
+to configure the object step by step, hiding the implementation details.
 
 ## Example
-Let's imagine that we have to build a system that keeps track of the components of a computer.
+Let's imagine that we have to build a system that keeps track of the components of a computer:
 
 ```ruby
 class Computer
-  attr_accessor :display
-  attr_accessor :motherboard
-  attr_reader :drives
+  attr_accessor :display, :motherboard, :drives
   
-  def initialize(display=:crt, motherboard=Motherboard.new, drives=[])
-    @motherboard = motherboard
+  def initialize(display=:crt, motherboard, drives=[])
+    @motherboard = motherboard || Motherboard.new
     @drives = drives
     @display = display
   end
@@ -42,10 +41,14 @@ class Motherboard
   attr_accessor :cpu
   attr_accessor :memory_size
 
-  def initialize(cpu=BasicCPU.new, memory_size=1000)
-    @cpu = cpu
+  def initialize(cpu, memory_size=1000)
+    @cpu = cpu || BasicCPU.new
     @memory_size = memory_size
   end
+end
+
+class Drive
+  attr_accessor :kind, :size_in_mb, :writer
 end
 ```
 
@@ -53,7 +56,8 @@ So, the process of building a `Computer` can be really tedious:
 
 ```ruby
 # Build a fast computer with lots of memory...
-motherboard = Motherboard.new(TurboCPU.new, 4000)
+turbo_cpu = TurboCPU.new
+motherboard = Motherboard.new(turbo_cpu, 4000)
 
 # ...and a hard drive, a CD writer, and a DVD
 drives = []
@@ -74,7 +78,8 @@ class ComputerBuilder
   end
 
   def turbo(has_turbo_cpu=true)
-    @computer.motherboard.cpu = TurboCPU.new
+    cpu_class = has_turbo_cpu ? TurboCPU : BasicCPU
+    @computer.motherboard.cpu = cpu_class.new
   end
 
   def display=(display)
