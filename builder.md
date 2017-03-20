@@ -4,7 +4,7 @@
 We need to create a complex object that is hard to configure.
 
 ## Solution
-The **Builder** pattern encapsulates the construcion logic of complex objects in its own class. It defines an interface to configure the object step by step, hiding the implementation details.
+The **Builder** pattern encapsulates the construction logic of complex objects in its own class. It defines an interface to configure the object step by step, hiding the implementation details.
 
 ## Example
 Let's imagine that we have to build a system that keeps track of the components of a computer.
