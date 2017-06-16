@@ -35,12 +35,11 @@ class Employee
   attr_reader :name, :title
   attr_reader :salary
 
-  def initialize( name, title, salary)
+  def initialize(name, title, salary)
     @name = name
     @title = title
     @salary = salary
-    @payroll = payroll
-    @observers = observers
+    @observers = []
   end
 
   def salary=(new_salary)
@@ -89,7 +88,7 @@ class Employee
   attr_reader :name, :address
   attr_reader :salary
 
-  def initialize( name, title, salary)
+  def initialize(name, title, salary)
     @name = name
     @title = title
     @salary = salary
