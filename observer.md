@@ -85,7 +85,7 @@ require 'observer'
 class Employee
   include Observable
 
-  attr_reader :name, :address
+  attr_reader :name, :title
   attr_reader :salary
 
   def initialize(name, title, salary)
