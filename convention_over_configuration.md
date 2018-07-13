@@ -1,13 +1,13 @@
 # Convention Over Configuration Pattern
 
 ## Problem
-We want to build an extensible system and not carrying the configuration burden.
+We want to build an extensible system without carrying the configuration burden.
 
 ## Solution
 The **Convention Over Configuration** pattern suggests establishing some conventions based on class, method and file names, as well as a standard directory layout, instead of relying on configuration files.
 
 ## Example
-Let's consider a message gateway that receives messages and forwards them to their destinations. A key requirement is that it must be easy to add new messaging protocols. A message would look like this: 
+Let's consider a message gateway that receives messages and forwards them to their destinations. A key requirement is that it must be easy to add new messaging protocols. A message would look like this:
 
 ```ruby
 require 'uri'
@@ -23,7 +23,7 @@ class Message
 end
 ```
 
-`to` is an `URI` representing the final destination of the message, and it can be sent through a HTTP Post request, via e-mail or to a file. To handle all these types of messages, we'll build an adapter for each protocol:
+`to` is an `URI` representing the final destination of the message. It can be sent through a HTTP Post request via e-mail or to a file. To handle all these types of messages, we'll build an adapter for each protocol:
 
 ```ruby
 require 'net/http'
@@ -47,7 +47,7 @@ def adapter_for(message)
 end
 ```
 
-We basically build the adapter's class name assuming it follow the convention and get the class with the `const_get` method. Now we can easily add the `FTP` protocol if we want to. However, we still have to deal with the problem of loading new adapters into our system. Instead of having a file where we require all the adapters of our application, we define the second convention: **put all the adapters in the adapter directory**. If all the adapters are in the same folder, we can dynamically load all of them with the following method:
+We basically build the adapter's class name assuming it follows the convention and get the class with the `const_get` method. Now we can easily add the `FTP` protocol if we want to. However, we still have to deal with the problem of loading new adapters into our system. Instead of having a file where we require all the adapters of our application, we define the second convention: **put all the adapters in the adapter directory**. If all the adapters are in the same folder, we can dynamically load all of them with the following method:
 
 ```ruby
 def load_adapters
@@ -57,7 +57,7 @@ def load_adapters
 end
 ```
 
-With these two conventions we make it really easy for other developers to add new protocols ready to use automatically in our application. The `MessageGateway` would look like this:
+With these two conventions we make it really easy for other developers to add new, ready to use, protocols automatically in our application. The `MessageGateway` would look like this:
 
 ```ruby
 class MessageGateway
@@ -85,7 +85,7 @@ class MessageGateway
 end
 ```
 
-Now we want to add some security into our platform by controlling which users are allowed to send messages to a given host. We'll have one authorization class per host with a generic method `authorized?` to check if the user can send the message. However, we'll define our third convention that will help us create specific policies for certain users: **if the user has a special policy, it will be implemented in a method called <user>_authorized?**:
+Now we want to add some security into our platform by controlling which users are allowed to send messages to a given host. We'll have one authorization class per host with a generic method `authorized?` to check if the user can send the message. We'll also define our third convention that will help us create specific policies for certain users: **if the user has a special policy, it will be implemented in a method called <user>_authorized?**:
 
 ```ruby
 class RussolsenDotComAuthorizer
@@ -114,7 +114,7 @@ def authorized?(message)
 end
 ```
 
-The last thing we can do if we want to let another developers extend our system is providing them with some examples or, much better, with template generators that create the scaffold of a new adapter:
+The last thing we can do if we want to let other developers extend our system is to provide them with some examples or (much better) with template generators that create the scaffold of a new adapter:
 
 ```ruby
 protocol_name = ARGV[0]

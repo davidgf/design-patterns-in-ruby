@@ -4,10 +4,10 @@
 We need to build a hierarchy of tree objects and want to interact with all them the same way, regardless of whether it's a leaf object or not.
 
 ## Solution
-There are three main classes in the Composite pattern: the **component**, the **leaf** and the **composite** classes. The **component** is the base class and defines a common interface for all the components. The **leaf** is an indivisible building block of the process. The **composite** is a higher-level component built from subcomponents, so it fulfills a dual role: is a component and a collection of components. As both composite and leaf classes implement the same interface, the can be used the same way.
+There are three main classes in the Composite pattern: the **component**, the **leaf** and the **composite** classes. The **component** is the base class and defines a common interface for all the components. The **leaf** is an indivisible building block of the process. The **composite** is a higher-level component built from subcomponents, so it fulfills a dual role: it is a component and a collection of components. As both composite and leaf classes implement the same interface, they can be used the same way.
 
 ## Example
-We've been asked to build a system that keeps track of the manufacturing of cakes, being a key requirement being able to know how long it takes the task of baking it. Making a cake is a complicated process, as it involves multiple tasks that might be composed of different subtasks. The whole process could be represented in the following tree:
+We've been asked to build a system that tracks the manufacturing of cakes, with a key requirement of being able to know how long it takes to bake it. Making a cake is a complicated process, as it involves multiple tasks that might be composed of different subtasks. The whole process could be represented in the following tree:
 
 ```
 |__ Manufacture Cake
@@ -25,7 +25,7 @@ We've been asked to build a system that keeps track of the manufacturing of cake
         |__ Label
 ```
 
-In the Composite pattern, we'll model every step in a separate class with a common interface, which will report back how long they take. So we'll define a common base class, `Task`, which plays the role of **component**.
+In the Composite pattern, we'll model every step in a separate class with a common interface that will report back how long they take. So we'll define a common base class, `Task`, that plays the role of **component**.
 
 ```ruby
 class Task
@@ -42,7 +42,7 @@ class Task
 end
 ```
 
-We can now create the classes in charge of the most basic jobs, this is, **leaf** classes, like `AddDryIngredientsTask`:
+We can now create the classes in charge of the most basic jobs (**leaf** classes) like `AddDryIngredientsTask`:
 
 ```ruby
 class AddDryIngredientsTask < Task
@@ -56,7 +56,7 @@ class AddDryIngredientsTask < Task
 end
 ```
 
-What we need now is a container to deal with complex tasks, which are internally built up of any number of subtasks, but from the outside look like any other `Task`. We'll create the **composite** class:
+What we need now is a container to deal with complex tasks that are internally built up of any number of subtasks, but look like any other `Task` from the outside. We'll create the **composite** class:
 
 ```ruby
 class CompositeTask < Task
@@ -81,7 +81,7 @@ class CompositeTask < Task
 end
 ```
 
-With this base class we can build complex tasks that behave like a simple one, as it implements the `Task` interface, and also add subtasks with the method `add_sub_task`. We'll create the `MakeBatterTask`
+With this base class we can build complex tasks that behave like a simple one (because it implements the `Task` interface), and also add subtasks with the method `add_sub_task`. We'll create the `MakeBatterTask`
 
 ```ruby
 class MakeBatterTask < CompositeTask

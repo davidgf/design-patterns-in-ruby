@@ -1,10 +1,10 @@
 # Command Pattern
 
 ## Problem
-We want to perform some specific task without knowing how the whole process is or having any information about the receiver of the request.
+We want to perform some specific task without knowing how the whole process works or having any information about the receiver of the request.
 
 ## Solution
-The Command pattern decouples the object that needs to perform a specific task from the one that knows how to do it. It encapsulates all the needed information to do the job into its own object, including who the receiver(s) is(are), the methods to invoke and the parameters. That way, any object that wants to perform the task only needs to know about the command object interface.
+The Command pattern decouples the object that needs to perform a specific task from the one that knows how to do it. It encapsulates all the needed information to do the job into its own object including: who the receiver(s) is(are), the methods to invoke, and the parameters. That way, any object that wants to perform the task only needs to know about the command object interface.
 
 ## Example
 Let's consider a button implementation of some GUI framework, which has a method called upon button click.
@@ -21,7 +21,7 @@ class SlickButton
 end
 ```
 
-So, we could extend the button class overriding the `on_button_push` method to perform certain actions whenever a user clicks it. For example, if the button's purpose is saving a document, we could do something like this:
+We could extend the button class that overrides the `on_button_push` method to perform certain actions whenever a user clicks it. For example, if the button's purpose is saving a document, we could do something like this:
 
 ```ruby
 class SaveButton < SlickButton
@@ -31,7 +31,7 @@ class SaveButton < SlickButton
 end
 ```
 
-However, a complex GUI could have hundreds of buttons, which means that we would end up having several hundreds of subclasses of our button. There is an easier way. We can factor out the code that performs the action into its own object, which implements a simple interface. Then, we can refactor our button's implementation to receive the command object as a parameter and calling it when it's clicked.
+However, a complex GUI could have hundreds of buttons, which means that we would end up having several hundreds of subclasses of our button. There is an easier way. We can factor out the code that performs the action into its own object, which implements a simple interface. Then, we can refactor our button's implementation to receive the command object as a parameter and call it when it's clicked.
 
 ```ruby
 class SaveCommand
@@ -55,7 +55,7 @@ end
 save_button = SlickButton.new(SaveCommand.new)
 ```
 
-The Command pattern is pretty useful if we need to implement **undo** feature. All we need to do is implementing the `unexecute` method in our command object. For example, this is how we would implement the task of creating a file:
+The Command pattern is pretty useful if we need to implement **undo** feature. All we need to do is implement the `unexecute` method in our command object. For example, this is how we would implement creating a file:
 
 ```ruby
 class CreateFile < Command

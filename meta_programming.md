@@ -4,10 +4,10 @@
 We want to gain more flexibility when defining new classes and create custom tailored objects on the fly.
 
 ## Solution
-As we already know, Ruby is a very dynamic language, but that doesn't apply only to typing: we can even define new methods in our classes at runtime. Thanks to **singleton methods** we can add new methods to existing instances. If instead of adding one method we want to add a group of them, we can also use the `extend` method, that has the same effect as including a module. Last but no least, with the `class_eval` method we can evaluate a string in the context of a class, which combined with string interpolations is a really great asset to create new methods at runtime.
+Ruby is a very dynamic language, but that doesn't apply only to typing— we can even define new methods in our classes at runtime thanks to **singleton methods**. If instead of adding one method we want to add a group of them, we can also use the `extend` method, which would have the same effect as including a module. Last but not least, with the `class_eval` method we can evaluate a string in the context of a class, which combined with string interpolations is a really great asset to create new methods at runtime.
 
 ## Example
-Coming back to the [Factory Pattern](factory.md) where we created flora and fauna habitats, we might think we need more flexibility. Back then, we had multiple factories that provided us with a fixed list of combinations to create different organisms. If we wanted to have full flexibility for creating any combination we come up with, but avoiding a ton of classes that support every single combination, we can make use of singleton methods:
+Going back to the [Factory Pattern](factory.md) where we created flora and fauna habitats, we might think we need more flexibility. Back then, we had multiple factories that provided us with a fixed list of combinations to create different organisms. If we wanted to have full flexibility for creating any combination we come up with while avoiding a ton of classes that support every single combination, we can make use of singleton methods:
 
 ```ruby
 def new_plant(stem_type, leaf_type)
@@ -58,9 +58,9 @@ def new_animal(diet, awake)
 end
 ```
 
-In this example, the `extend` method does the same as including a module.
+In this example, the `extend` method does the same thing as including a module.
 
-Now, let's imagine that we want to group together animals and trees that share a section of the jungle, and also keep track of their biological classifications. Although they look like two different programming problems, they are quite similar: both of them aim to group a set of objects. Ideally, we could stablish different kind of relationships between objects on the fly like this:
+Now, let's imagine that we want to group together animals and trees that share a section of the jungle and keep track of their biological classifications. Although they look like two different programming problems, they are quite similar— both of them aim to group a set of objects. Ideally, we could stablish different kinds of relationships between objects on the fly like this:
 
 ```ruby
 class Tiger < CompositeBase
@@ -86,7 +86,15 @@ se_jungle = Jungle.new('southeastern jungle tigers')
 se_jungle.add_sub_population(tony_tiger)
 ```
 
-The method `composite_of(:group)` would provide a method for including members to any `:group` we could think of by adding dynamic `add_sub_:group` methods to the class instances. The same way, the method `member_of(:group)` would a method `parent_:group` to leaf nodes so that they can know what group they are member of. It happens that all this is absolutely feasible with some meta programming:
+REVIEW: IM NOT SURE IF THIS IS WHAT YOU MEANT
+!!!!!
+!!!!!
+=begin
+The method `composite_of(:group)` would provide a method for including members to any `:group` we could think of by adding dynamic `add_sub_:group` methods to the class instances. In the same way, the method `member_of(:group)` would provide a method `parent_:group` that could leaf nodes so that they can know what group they are member of. It happens that all this is absolutely feasible with some meta programming:
+=end
+!!!!!
+!!!!!
+
 
 ```ruby
 class CompositeBase
@@ -126,4 +134,4 @@ class CompositeBase
 end 
 ```
 
-`CompositeBase` is the base class of the rest of components and implements the `member_of` and `composite_of` methods. Simply passing them the name of the group, they set up all the methods we need by constructing a string that defines them. The call to `class_eval` interprets the string in the context of the class, making them available.
+`CompositeBase` is the base class for the rest of the components and implements the `member_of` and `composite_of` methods. By simply passing them the name of the group, they set up all the methods we need by constructing a string that defines them. The call to `class_eval` interprets the string in the context of the class, making them available.

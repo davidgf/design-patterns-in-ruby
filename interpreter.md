@@ -3,12 +3,17 @@
 ## Problem
 We need a specialized language to solve a well defined problem of know domain.
 
+We need a specialized language to solve a well defined problem of no (as in
+nil) domain.
+
+We need a specialized language to solve a well defined problem of a known domain.
+
 ## Solution
 Interpreters normally work in two phases: **parsing** and **evaluating**. The parser reads the data and creates a data structure called **abstract syntax tree (AST)**, which includes the same information but represented in a tree of objects. Then, the AST is evaluated against external conditions.
 In the AST, the leaf nodes (**terminals**) are the most basic building blocks of the language. The nonleaf nodes (**nonterminals**) represent the higher order concepts in the language. After providing the external conditions (**context**), the AST is evaluated recursively.
 
 ## Example
-Let's consider a file search tool, that we'd like to use with a simple query language. The most basic operation is returning all the files, and could be implemented like this:
+Let's consider a file search tool that we'd like to use with a simple query language. The most basic operation is returning all the files and could be implemented like this:
 
 ```ruby
 require 'find'
@@ -29,7 +34,7 @@ class All < Expression
 end
 ```
 
-Also, we'd need to fetch files whose name match certain pattern:
+Also, we'd need to fetch files whose name match a certain pattern:
 
 ```ruby
 class FileName < Expression
@@ -82,7 +87,7 @@ class Writable < Expression
 end
 ```
 
-These basic operations are the **terminals** of our AST. Let's build the first **nonterminal**, that negates the operation:
+These basic operations are the **terminals** of our AST. Let's build the first **nonterminal** that negates the operation:
 
 ```ruby
 class Not < Expression
@@ -103,7 +108,7 @@ expr_not_writable = Not.new( Writable.new )
 readonly_files = expr_not_writable.evaluate('test_dir')
 ```
 
-If instead of negating an operation we'd like to combine the results of two of them or getting files that meet two conditions, we could build the **OR** and **AND** nonterminal:
+If instead of negating an operation we'd like to combine the results of two of them or get files that meet two conditions, we could build the **OR** nd **AND** nonterminal:
 
 ```ruby
 class Or < Expression

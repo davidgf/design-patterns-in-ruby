@@ -1,10 +1,10 @@
 # Proxy Pattern
 
 ## Problem
-We want to have more control over how and when we access to a certain object.
+We want to have more control over how and when we access a certain object.
 
 ## Solution
-With the proxy pattern we create an object, **proxy**, that has a reference to the real object we want to access. Then, whenever the client calls it, it simply forwards the request to the real one. There are three main scenarios where this pattern might be useful:
+With the proxy pattern we create an object, **proxy**, that has a reference to the real object we want to access. Then, whenever the client calls the proxy, it simply forwards the request to the real one. There are three main scenarios where this pattern might be useful:
 * **Protection Proxy**: before delegating calls to the real object, it adds a layer of security. A big advantage of this approach is that it gives us separation of concerns, as the proxy takes care of access control, while the real object is only concerned about business logic.
 * **Remote Proxy**: when the object we want to use is in another machine and it should be fetched across the network, the proxy handles all the connection complexity, while the client can use the object as if it was in the same machine.
 * **Virtual Proxy**: it delays the creation of an object until it is used.
@@ -64,7 +64,7 @@ class AccountProtectionProxy
 end
 ```
 
-Maybe what we want to do is creating the bank account object only when it's really needed. We could create a proxy that initializes the real object only when one of its methods is called, and keep a cached copy for further calls:
+Maybe what we want to do is create the bank account object only when it's really needed. We could create a proxy that initializes the real object only when one of its methods is called and keep a cached copy for further calls:
 
 ```ruby
 class VirtualAccountProxy
