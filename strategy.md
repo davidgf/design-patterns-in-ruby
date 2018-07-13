@@ -1,13 +1,13 @@
 # Strategy Pattern
 
 ## Problem
-We need to vary part of an algorithm, something we previously solved using the Template Method pattern, although we want to avoid its drawbacks, introduced by the fact that it's built around inheritance.
+We need to vary part of an algorithm— something we previously solved using the Template Method pattern— although we want to avoid its drawbacks, introduced by the fact that it's built around inheritance.
 
 ## Solution
-To avoid problems introduced by inheritance we should use delegation. So, instead of creating subclasses (like in the Template Method pattern), we tear out the varying part of the code and isolate it in its own class, creating one of them for each variation. The key idea of the Strategy pattern is to define a family of objects (strategies), which all do (almost) the same thing and support the same interface. Then, the user of the strategy (context) can treat the strategies as interchangeable parts.
+To avoid problems introduced by inheritance we should use delegation. Instead of creating subclasses (like in the Template Method pattern), we tear out the varying part of the code and isolate it in its own class and create one of them for each variation. The key idea of the Strategy pattern is to define a family of objects (strategies), which all do (almost) the same thing and support the same interface. Then, the user of the strategy (context) can treat the strategies as interchangeable parts.
 
 ## Example
-Following with the example of the Template Method pattern, we can refactor the code so that every format is class (strategy), instead of a subclass. That way, the Report class would become much simpler, it would play the context object role and would be provided with the strategy.
+Following the example of the Template Method pattern, we can refactor the code so that every format is a class (strategy), instead of a subclass. That way, the Report class would become much simpler, it would play the context object role and would be provided with the strategy.
 
 ```ruby
 class Report
@@ -54,7 +54,7 @@ class PlainTextFormatter
 end
 ```
 
-To use it, we just provide a format object (strategy) to the report (context)
+To use it, we just provide a formated object (strategy) to the report (context)
 
 ```ruby
 report = Report.new(HTMLFormatter.new)

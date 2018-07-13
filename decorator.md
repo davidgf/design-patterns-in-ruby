@@ -4,10 +4,10 @@
 We need to vary the responsibilities of an object, adding some features.
 
 ## Solution
-In the **Decorator** pattern we create an object that wraps the real one, implementing the same interface and forwarding method calls. However, before delegating on the real object, it performs the additional feature. Since all decorators implement the same core interface, we can build chains of decorators and assemble a combination of features at runtime. 
+In the **Decorator** pattern we create an object that wraps the real one, and implemente the same interface and forwarding method calls. However, before delegating to the real object, it performs the additional feature. Since all decorators implement the same core interface, we can build chains of decorators and assemble a combination of features at runtime. 
 
 ## Example
-Below there's an implementation of an object that simply writes a text line to a file:
+Below is an implementation of an object that simply writes a text line to a file:
 
 ```ruby
 class SimpleWriter
@@ -34,7 +34,7 @@ class SimpleWriter
 end
 ```
 
-We could need at some point printing the line number before each one, or a timestamp or a checksum. We could achieve so by adding new methods to that class that perform exactly what we want, or creating new subclasses for each use case. However, none of those solutions is optimal, as with the former the client should know what kind of line is printing all the time, while with the latter we could end up having a huge amount of subclasses, especially if we want to combine the new features. So, let's create a decorator base class that implements the same interface that our writer class and delegates on it:
+At some point, we might need to print the line number before each one, or a timestamp or a checksum. We could achieve this by adding new methods to the class that performs exactly what we want, or by creating a new subclasses for each use case. However, none of these solutions is optimal. In the case of the former, the client should know what kind of line is printing all the time. In the case of the latter, we could end up having a huge amount of subclasses, especially if we want to combine the new features. So, let's create a decorator base class that implements the same interface that our writer class and delegates on it:
 
 ```ruby
 class WriterDecorator

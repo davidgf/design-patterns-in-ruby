@@ -4,7 +4,7 @@
 We have a complex bit of code, but somewhere in the middle there is a bit that needs to vary.
 
 ## Solution
-The general idea of the Template Method pattern is to build an abstract base class with a skeletal method, which drives the bit of the processing that needs to vary by making calls to abstract methods, which are then supplied by the concrete subclasses. So, the abstract base class controls the higher-level processing and the sub-classes simply fill in the details.
+The general idea of the Template Method pattern is to build an abstract base class with a skeletal method, which drives the bit of processing that needs to vary by making calls to abstract methods, which are then supplied by the concrete subclasses. The abstract base class controls the higher-level processing and the sub-classes simply fill in the details.
 
 ## Example
 
@@ -68,7 +68,7 @@ class Report
 end
 ```
 
-That's kind of messy, the code that handles both formats is tangled up and, even worse, it's not extensible at all (what if we want to add a new format?). Let's refactor the code looking for what stay the same. In most reports the basic flow is the same, regardless of the format: output header, output title, output each line of the report and output any trailing stuff required by the format. We could create an abstract base class that performs all those steps but leaves the details to a subclass:
+That's kind of messy. The code that handles both formats is tangled up and, even worse, it's not extensible at all (what if we want to add a new format?). Let's refactor the code looking for what stays the same. In most reports the basic flow is the same, regardless of the format: output header, output title, output each line of the report and output any trailing stuff required by the format. We could create an abstract base class that performs all those steps but leaves the details to a subclass:
 
 ```ruby
 class Report
@@ -118,7 +118,7 @@ class Report
 end
 ```
 
-We can now define a subclass that implements the details
+We can now define a subclass that implements the details:
 
 ```ruby
 class PlainTextReport < Report

@@ -1,10 +1,10 @@
 # Singleton Pattern
 
 ## Problem
-We need to have a single instance of certain class across the whole application.
+We need to have a single instance of a certain class across the whole application.
 
 ## Solution
-In the **Singleton** pattern the access to the constructor is restricted, so that it cannot be instantiated. So, the creation of the single instance is done inside the class and is held is a class variable, and it can be accessed through a getter across the application.
+In the **Singleton** pattern, the access to the constructor is restricted so that it cannot be instantiated. So, the creation of the single instance is done inside the class and is held as a class variable. It can be accessed through a getter across the application.
 
 ## Example
 Let's consider the implementation of a logger class:
@@ -39,7 +39,7 @@ class SimpleLogger
 end
 ```
 
-Logging is a feature used across the whole application, so it makes sense that there should exist only a single instance of the logger. We can make sure that nobody instantiate twice the `SimpleLogger` class by making its constructor private:
+Logging is a feature used across the whole application, so it makes sense that there should only be a single instance of the logger. We can make sure that nobody instantiates the `SimpleLogger` class twice by making its constructor private:
 
 ```ruby
 class SimpleLogger

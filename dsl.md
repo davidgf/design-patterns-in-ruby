@@ -4,10 +4,10 @@
 We want to build a convenient syntax for solving problems of a specific domain.
 
 ## Solution
-Ruby is a really flexible an has human friendly syntax, sometimes reading a piece of Ruby code even feels like reading a book. **The Domain-Specific Language (DSL)** pattern takes advantage of this and suggest building a new language on top of Ruby. It starts by building data structures, which hold the information about the tasks to be performed. Then, it defines several top-level methods that support the DSL and which the end user will use to build a program with the newly created language. Finally, the program is evaluated and interpreted as Ruby method calls.
+Ruby is really flexible and has human friendly syntax— sometimes reading a piece of Ruby code even feels like reading a book. **The Domain-Specific Language (DSL)** pattern takes advantage of this and suggests building a new language on top of Ruby. It starts by building data structures that hold the information about the tasks to be performed. Then, it defines several top-level methods that support the DSL and allow the end user to build a program with the newly created language. Finally, the program is evaluated and interpreted as Ruby method calls.
 
 ## Example
-We want to provide an simple way to create periodic backups of certain folders. We can easily do so with Ruby, but our end users might not know anything about programming, so we'll build a DSL for tat matter. First, we need to set up some data structures:
+We want to provide a simple way to create periodic backups of certain folders. We can easily do so with Ruby, but our end users might not know anything about programming so we'll build a DSL for them. First, we need to set up some data structures:
 
 ```ruby
 class Backup
@@ -59,7 +59,7 @@ class DataSource
 end
 ```
 
-The `Backup` class holds the information about the directories to be backed up and a method to perform it, while the `DataSource` class is a container for a path to a directory and has file finding capabilities. The only thing left is the top-level methods that will make use of the data structures and will let the end user define his program:
+The `Backup` class holds the information about the directories to be backed up and a method to perform the backup. The `DataSource` class is a container for a path to a directory and has file finding capabilities. The only thing left is the top-level methods that will make use of the data structures and will let the end user define their program:
 
 ```ruby
 def backup(dir, find_expression=All.new)
@@ -78,7 +78,7 @@ eval(File.read('backup.pr'))
 Backup.instance.run
 ```
 
-It's a pretty simple language: with the `backup` method we set the directories to be backed up, with `to` the destination folder of the copy and with `interval` how often the copy will be performed. Then, the program created by the end user is read and interpreted as Ruby code with `eval`. How does a program program created with our DSL look like? Pretty simple:
+It's a pretty simple language: the `backup` method sets the directories to be backed up, the `to` method sets the destination folder of the copy, and the `interval` method sets how often the copy will be performed. Then, the program created by the end user is read and interpreted as Ruby code with `eval`.What does a program created with our DSL look like? Pretty simple:
 
 ```ruby
 backup '/home/russ/documents'
