@@ -1,7 +1,7 @@
 # Interpreter Pattern
 
 ## Problem
-We need a specialized language to solve a well defined problem of know domain.
+We need a specialized language to solve a well defined problem of known domain.
 
 We need a specialized language to solve a well defined problem of no (as in
 nil) domain.
