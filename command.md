@@ -10,7 +10,7 @@ The Command pattern decouples the object that needs to perform a specific task f
 Let's consider a button implementation of some GUI framework, which has a method called upon button click.
 
 ```ruby
-class SlickButton
+class ClickButton
 
   # Lots of button drawing and management
   # code omitted...
@@ -24,7 +24,7 @@ end
 We could extend the button class that overrides the `on_button_push` method to perform certain actions whenever a user clicks it. For example, if the button's purpose is saving a document, we could do something like this:
 
 ```ruby
-class SaveButton < SlickButton
+class SaveButton < ClickButton
   def on_button_push
     # Save the current document...
   end
@@ -40,7 +40,7 @@ class SaveCommand
   end
 end
 
-class SlickButton
+class ClickButton
   attr_accessor :command
 
   def initialize(command)
