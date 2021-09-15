@@ -88,7 +88,7 @@ class VirtualAccountProxy
   end
 
   def subject
-    @subject || (@subject = BankAccount.new(@starting_balance))
+    @subject ||= BankAccount.new(@starting_balance)
   end
 end
 ```
