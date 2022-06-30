@@ -13,7 +13,7 @@ Summary of the design patterns explained in the book [Design Patterns in Ruby](h
 * [Decorator](decorator.md): vary the responsibilities of an object adding some features
 * [Factory](factory.md): create objects without having to specify the exact class of the object that will be created
 * [Interpreter](interpreter.md): provides a specialized language to solve a well defined problem of know domain
-* [Iterator](iterator.md): provides a way to access a collection of sub-objects without exposing the underlaying representation
+* [Iterator](iterator.md): provides a way to access a collection of sub-objects without exposing the underlying representation
 * [Observer](observer.md): helps building a highly integrated system, maintainable and avoids coupling between classes
 * [Proxy](proxy.md): allows us having more control over how and when we access to a certain object
 * [Singleton](singleton.md): have a single instance of certain class across the application

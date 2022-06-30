@@ -51,7 +51,7 @@ class StringIOAdapter
 end
 ```
 
-Now we can use a `String` as if it were an open file (it only implements a small part of the `IO` interface, essentally what we need).
+Now we can use a `String` as if it were an open file (it only implements a small part of the `IO` interface, essentially what we need).
 
 ```ruby
 encrypter = Encrypter.new('XYZZY')
