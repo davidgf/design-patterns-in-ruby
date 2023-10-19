@@ -54,7 +54,7 @@ class PlainTextFormatter
 end
 ```
 
-To use it, we just provide a formated object (strategy) to the report (context)
+To use it, we just provide a formatted object (strategy) to the report (context)
 
 ```ruby
 report = Report.new(HTMLFormatter.new)
